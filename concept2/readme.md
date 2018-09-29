@@ -25,3 +25,7 @@ SUBSYSTEM=="usb", ATTRS{idVendor}=="17A4", ATTRS{idProduct}=="0002", MODE="0666"
 
 To re-load the rules
 udevadm control --reload-rules
+
+On RPI
+
+libusb-1.0-0-dev
