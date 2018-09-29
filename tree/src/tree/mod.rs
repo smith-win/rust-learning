@@ -21,7 +21,7 @@ pub struct TreeNode<T> {
     /// TreeNode -- yes, the child is another TreeNode
     /// Rc<TreeNode> .. so can have direct refs to each node from outside (via Rc)
     /// Vec<Rc<TreeNode>> ... to support multiple children
-    /// RefCell ... so we can add children .. ("interior mutability pattern")
+    /// RefCell ... so we can add children .. ("interior mutability pattern") - we need to amend the Vec
     pub children: RefCell<Vec<Rc<TreeNode<T>>>>,
 
 

@@ -1,6 +1,6 @@
 /// A really basic party struct
 
-#[derive(Debug)]
+#[derive(Debug, Serialize)]
 pub struct Party<'a> {
 
     pub legal_name: &'a str,

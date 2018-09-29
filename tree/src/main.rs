@@ -8,6 +8,11 @@ mod party;
 extern crate log;
 extern crate env_logger;
 
+#[macro_use]
+extern crate serde_derive;
+extern crate serde_json;
+extern crate serde;
+
 use tree::TreeNode;
 use party::Party;
 
@@ -40,8 +45,22 @@ fn main() {
 
     log_tree(&root, 0);
 
+    serde_party();
+
+
 }
 
+    /// Simple Serde of a party
+fn serde_party() {
+
+    let p =  Party::new(22, "BAS");
+    println!("### Serde JSON serialized ###");
+
+    let serialized = serde_json::to_string(&p).unwrap();
+    println!("{}", serialized);
+
+
+}
 
 /// Just create some log output from the node
 fn log_tree(node : &Rc<TreeNode<Party>>, indent: i32 ) {

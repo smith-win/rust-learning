@@ -6,3 +6,8 @@ authors = ["John Doe <smthwnsn14@mail.com>"]
 [dependencies]
 log = "0.4"
 env_logger = "0.5.9"
+
+## serde libs for JSON support
+serde = "1.0.79"
+serde_derive = "1.0.79"
+serde_json = "1.0.28"
