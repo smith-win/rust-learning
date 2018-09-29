@@ -13,12 +13,15 @@
 
 // measure performance against CommonsCsv ?
 
+
 // locating test resources -- 
 //  let mut d = PathBuf::from(env!("CARGO_MANIFEST_DIR"));
+
 
 use std::fs::File;
 use std::io::{BufReader, BufRead,  Read};
 use std::iter::Iterator;
+
 
 const NEWLINE:u8 = 10;
 const COMMA:u8 = 44;
@@ -34,6 +37,7 @@ pub enum CsvParserToken {
 /// Structure of the CSV parser
 pub struct CsvParser<'a> {
     pub delimiter: &'a str,
+
     buf_reader: Box<BufRead>,  // trait .. unknown size at compile so need to box it!
     intenal_buffer: [u8; 1024], // this is used to read into .. if we can dynamically size ... Box it
     buf_max_size: usize,
@@ -58,6 +62,7 @@ impl <'a> CsvParser<'a> {
             , intenal_buffer: [0u8; 1024]
             , buf_max_size: 0
             , buf_pos: 0
+
             , curr_attr_len: 0
             , next_end_record: false
         }
@@ -70,11 +75,12 @@ impl <'a> CsvParser<'a> {
 /// .. not next() and "hasNext()" ... just next.
 /// ... makes ite easy to implement ?? .. (Like Guavas abstact iterator ?)
 impl <'a> Iterator for CsvParser<'a> {
-    type Item = CsvParserToken; // Associated type?
 
+    type Item = CsvParserToken; // Associated type?
 
     // NV
     fn next(&mut self) -> Option<CsvParserToken> {
+
 
         if self.next_end_record {
             self.next_end_record = false;
@@ -87,6 +93,7 @@ impl <'a> Iterator for CsvParser<'a> {
             // we can take more the internal buffer 
             // try and read from 
             self.buf_pos = 0;
+
             self.buf_max_size = self.buf_reader.read(&mut self.intenal_buffer).unwrap(); // TODO: SAFELY danger Will robinson
             println!("Read {} bytes from file", self.buf_max_size); //cd ..
 
