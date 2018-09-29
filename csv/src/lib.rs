@@ -19,12 +19,12 @@ mod tests {
         for y in csv_parser {
             count+=1;
             match y {
-                CsvParserToken::NewAttr | CsvParserToken::NewRecord => { 
-                    println!("[{}]", string); string.clear(); 
-                },
                 CsvParserToken::Character(n) => string.push(n as char),
+                CsvParserToken::EndAttr => {print!("[{}]", string); string.clear()}
+                CsvParserToken::EndRecord => println!("<"),
+                _ => {} //hack
             }
         }
-        assert_eq!(31, count);
+        assert_eq!(49, count);
     }
 }
