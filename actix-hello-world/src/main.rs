@@ -43,7 +43,7 @@ fn main() {
         .resource("/greet/{name}", |r| r.method(http::Method::GET).with( greet ))
         .resource("/goodbye/{name}", |r| r.method(http::Method::GET).with( goodbye ))
         )
-        .bind("127.0.0.1:8088")
+        .bind("0.0.0.0:8080") // wildcard & 8080
         .unwrap()
         .run();
     ;
