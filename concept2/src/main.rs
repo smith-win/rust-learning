@@ -70,7 +70,7 @@ fn main() {
 
     let x = device_list_interfaces(&pm_device, &pm_device_handle, &language);
     if x.is_err() {
-        error!("{:?}", x);
+        error!("device_list_interfaces {:?}", x);
     }
 }
 

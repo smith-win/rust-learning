@@ -1,0 +1,8 @@
+[package]
+name = "queue"
+version = "0.1.0"
+authors = ["John Doe <smthwnsn14@mail.com>"]
+
+[dependencies]
+log = "0.4"
+env_logger = "0.5.9"
